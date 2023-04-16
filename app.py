@@ -28,6 +28,10 @@ def get_db():
 get_db()
 
 
+@app.get("/")
+async def index_page():
+    return {'ok': True}
+
 @app.get("/update")
 async def update_page() -> dict:
     print('start updating...')
@@ -94,4 +98,5 @@ def all_db_page():
 
 
 if __name__ == '__main__':
+    # ssl_keyfile='/etc/letsencrypt/live/nulledapi.com/privkey.pem', ssl_certfile='/etc/letsencrypt/live/nulledapi.com/cert.pem'
     uvicorn.run(app, host='0.0.0.0', port=8080)
